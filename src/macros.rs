@@ -134,22 +134,6 @@ pub unsafe fn FT_MOTION_RATE<F: ToF32>(fighter: &mut L2CAgentBase, rate: F) {
 }
 
 #[inline]
-pub unsafe fn FT_DESIRED_RATE(fighter: &mut L2CAgentBase, motion_frames: f32, game_frames: f32) {
-    fighter.clear_lua_stack();
-    lua_args!(fighter, (game_frames / motion_frames));
-    sv_animcmd::FT_MOTION_RATE(fighter.lua_state_agent);
-    fighter.clear_lua_stack();
-}
-
-#[inline]
-pub unsafe fn FT_DESIRED_RATE2(fighter: &mut L2CAgentBase, motion_start_frame: f32, motion_end_frame: f32, game_frames: f32) {
-    fighter.clear_lua_stack();
-    lua_args!(fighter, (game_frames / (motion_end_frame / motion_start_frame)));
-    sv_animcmd::FT_MOTION_RATE(fighter.lua_state_agent);
-    fighter.clear_lua_stack();
-}
-
-#[inline]
 pub unsafe fn FT_SHOOTING_ATTACK_GROUND_CHECK_NEW<A: ToF32, B: ToF32, C: ToF32>(fighter: &mut L2CAgentBase, unk1: A, unk2: B, unk3: C) {
     fighter.clear_lua_stack();
     lua_args!(fighter, unk1.to_f32(), unk2.to_f32(), unk3.to_f32());
@@ -222,9 +206,9 @@ pub unsafe fn REQ_FINAL_START_CAMERA_arg3(fighter: &mut L2CAgentBase, camera: Ha
 // }
 
 #[inline]
-pub unsafe fn CAM_ZOOM_IN_arg5(fighter: &mut L2CAgentBase, zoom_amount: f32, arg2: f32, arg3: f32, y_rot: f32, x_rot: f32) {
+pub unsafe fn CAM_ZOOM_IN_arg5(fighter: &mut L2CAgentBase, zoom_frames: f32, object_id: u32, zoom_amt: f32, y_rot: f32, x_rot: f32) {
     fighter.clear_lua_stack();
-    lua_args!(fighter, zoom_amount, arg2, arg3, y_rot, x_rot);
+    lua_args!(fighter, zoom_frames, object_id, zoom_amt, y_rot, x_rot);
     sv_animcmd::CAM_ZOOM_IN_arg5(fighter.lua_state_agent);
     fighter.clear_lua_stack();
 }
@@ -404,6 +388,41 @@ pub unsafe fn EFFECT_FOLLOW<
     fighter.clear_lua_stack();
 }
 
+#[inline]
+pub unsafe fn EFFECT_FOLLOW_WORK<
+    A: ToF32,
+    B: ToF32,
+    C: ToF32,
+    D: ToF32,
+    E: ToF32,
+    F: ToF32,
+    G: ToF32
+    >(fighter: &mut L2CAgentBase, effect: Hash40, bone: Hash40, unk1: A, unk2: B, unk3: C, unk4: D, unk5: E, unk6: F, unk7: G, unk8: bool) {
+    fighter.clear_lua_stack();
+    lua_args!(fighter, effect, bone, unk1.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32(), unk5.to_f32(), unk6.to_f32(), unk7.to_f32(), unk8);
+    sv_animcmd::EFFECT_FOLLOW_WORK(fighter.lua_state_agent);
+    fighter.clear_lua_stack();
+}
+
+#[inline]
+pub unsafe fn EFFECT_FOLLOW_COLOR<
+    A: ToF32,
+    B: ToF32,
+    C: ToF32,
+    D: ToF32,
+    E: ToF32,
+    F: ToF32,
+    G: ToF32,
+    H: ToF32,
+    I: ToF32,
+    J: ToF32
+    >(fighter: &mut L2CAgentBase, effect: Hash40, bone: Hash40, unk1: A, unk2: B, unk3: C, unk4: D, unk5: E, unk6: F, unk7: G, unk8: bool, unk9: H, unk10: I, unk11: J) {
+    fighter.clear_lua_stack();
+    lua_args!(fighter, effect, bone, unk1.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32(), unk5.to_f32(), unk6.to_f32(), unk7.to_f32(), unk8, unk9.to_f32(), unk10.to_f32(), unk11.to_f32());
+    sv_animcmd::EFFECT_FOLLOW_COLOR(fighter.lua_state_agent);
+    fighter.clear_lua_stack();
+}
+
 pub unsafe fn EFFECT_FOLLOW_arg11<
     A: ToF32,
     B: ToF32,
@@ -548,6 +567,25 @@ pub unsafe fn EFFECT<
     fighter.clear_lua_stack();
     lua_args!(fighter, effect, bone, unk1.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32(), unk5.to_f32(), unk6.to_f32(), unk7.to_f32(), unk8.to_f32(), unk9.to_f32(), unk10.to_f32(), unk11.to_f32(), unk12.to_f32(), unk13.to_f32(), unk14);
     sv_animcmd::EFFECT(fighter.lua_state_agent);
+    fighter.clear_lua_stack();
+}
+
+#[inline]
+pub unsafe fn EFFECT_COLOR<
+    A: ToF32,
+    B: ToF32,
+    C: ToF32,
+    D: ToF32,
+    E: ToF32,
+    F: ToF32,
+    G: ToF32,
+    H: ToF32,
+    I: ToF32,
+    J: ToF32
+    >(fighter: &mut L2CAgentBase, effect: Hash40, bone: Hash40, unk1: A, unk2: B, unk3: C, unk4: D, unk5: E, unk6: F, unk7: G, unk8: bool, red: H, blue: I, green: J) {
+    fighter.clear_lua_stack();
+    lua_args!(fighter, effect, bone, unk1.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32(), unk5.to_f32(), unk6.to_f32(), unk7.to_f32(), unk8, red.to_f32(), blue.to_f32(), green.to_f32());
+    sv_animcmd::EFFECT_COLOR(fighter.lua_state_agent);
     fighter.clear_lua_stack();
 }
 
@@ -730,7 +768,7 @@ pub unsafe fn BURN_COLOR<
 >(fighter: &mut L2CAgentBase, unk: A, unk2: B, unk3: C, unk4: D) {
     fighter.clear_lua_stack();
     lua_args!(fighter, unk.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32());
-    sv_animcmd::LAST_EFFECT_SET_COLOR(fighter.lua_state_agent);
+    sv_animcmd::BURN_COLOR(fighter.lua_state_agent);
     fighter.clear_lua_stack();
 }
 
@@ -744,7 +782,7 @@ pub unsafe fn BURN_COLOR_FRAME<
 >(fighter: &mut L2CAgentBase, frame: A, unk: B, unk2: C, unk3: D, unk4: E) {
     fighter.clear_lua_stack();
     lua_args!(fighter, frame.to_f32(), unk.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32());
-    sv_animcmd::LAST_EFFECT_SET_COLOR(fighter.lua_state_agent);
+    sv_animcmd::BURN_COLOR_FRAME(fighter.lua_state_agent);
     fighter.clear_lua_stack();
 }
 
@@ -914,7 +952,7 @@ pub unsafe fn AFTER_IMAGE_OFF<F: ToF32>(fighter: &mut L2CAgentBase, unk: F) {
 #[inline]
 pub unsafe fn AFTER_IMAGE4_ON_arg29(fighter: &mut L2CAgentBase, unk: Hash40, unk2: Hash40, unk3: u64, bone: Hash40, unk4: f32, unk5: f32,
         unk6: f32, bone2: Hash40, unk7: f32, unk8: f32, unk9: f32, unk10: bool, unk11: Hash40, unk12: Hash40, unk13: u64, unk14: u64,
-        unk15: u64, unk16: u64, unk17: u64, unk18: u64, unk19: u64, unk20: u64, unk21: i32, unk22: u64, unk23: i32,
+        unk15: u64, unk16: i32, unk17: i32, unk18: i32, unk19: f32, unk20: u64, unk21: i32, unk22: u64, unk23: i32,
         unk24: u64, unk25: i32, unk26: f32, unk27: f32) {
     fighter.clear_lua_stack();
     lua_args!(fighter, unk, unk2, unk3, bone, unk4, unk5, unk6, bone2, unk7, unk8, unk9, unk10, unk11, unk12, unk13, unk14, unk15, unk16);
@@ -1002,6 +1040,14 @@ pub unsafe fn CORRECT(fighter: &mut L2CAgentBase, kind: i32) {
     fighter.clear_lua_stack();
     lua_args!(fighter, kind);
     sv_animcmd::CORRECT(fighter.lua_state_agent);
+    fighter.clear_lua_stack();
+}
+
+#[inline]
+pub unsafe fn LAST_EFFECT_SET_OFFSET_TO_CAMERA_FLAT(fighter: &mut L2CAgentBase, unk: f32) {
+    fighter.clear_lua_stack();
+    lua_args!(fighter, unk);
+    sv_animcmd::LAST_EFFECT_SET_OFFSET_TO_CAMERA_FLAT(fighter.lua_state_agent);
     fighter.clear_lua_stack();
 }
 
