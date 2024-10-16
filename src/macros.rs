@@ -282,10 +282,10 @@ pub unsafe fn CAM_ZOOM_IN_arg5(agent: &mut L2CAgentBase, zoom_amount: f32, arg2:
 }
 
 #[inline]
-pub unsafe fn CAM_ZOOM_IN_arg6(agent: &mut L2CAgentBase, arg1: f32, arg2: f32, arg3: f32, arg4: f32, arg5: f32, arg6: f32) {
+pub unsafe fn CAM_ZOOM_IN_arg6(agent: &mut L2CAgentBase, zoom_frames: f32, object_id: f32, zoom_amt: f32, y_rot: f32, x_rot: f32, quake_mul: f32) {
     agent.clear_lua_stack();
-    lua_args!(agent, arg1, arg2, arg3, arg4, arg5, arg6);
-    sv_animcmd::CAM_ZOOM_IN_arg6(agent.lua_state_agent);
+    lua_args!(fighter, zoom_frames, object_id, zoom_amt, y_rot, x_rot, quake_mul);
+    sv_animcmd::CAM_ZOOM_IN_arg6(fighter.lua_state_agent);
     agent.clear_lua_stack();
 }
 
