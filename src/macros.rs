@@ -720,7 +720,7 @@ pub unsafe fn EFFECT_FLIP_ALPHA<
     >(agent: &mut L2CAgentBase, left_effect: Hash40, right_effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x_pos: H, rand_y_pos: I,
     rand_z_pos: J, rand_x_rot: K, rand_y_rot: L, rand_z_rot: M, unk14: bool, axis: i32, alpha: N) {
     agent.clear_lua_stack();
-    lua_args!(agent, left_effect, right_effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), unk8.to_f32(), unk9.to_f32(), unk10.to_f32(), unk11.to_f32(), unk12.to_f32(), unk13.to_f32(), unk14, axis, alpha.to_f32());
+    lua_args!(agent, left_effect, right_effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), rand_x_pos.to_f32(), rand_y_pos.to_f32(), rand_z_pos.to_f32(), rand_x_rot.to_f32(), rand_y_rot.to_f32(), rand_z_rot.to_f32(), unk14, axis, alpha.to_f32());
     sv_animcmd::EFFECT_FLIP_ALPHA(agent.lua_state_agent);
     agent.clear_lua_stack();
 }
