@@ -428,9 +428,9 @@ pub unsafe fn FLASH<
     B: ToF32,
     C: ToF32,
     D: ToF32
-    >(agent: &mut L2CAgentBase, unk: A, unk2: B, unk3: C, unk4: D) {
+    >(agent: &mut L2CAgentBase, red: A, green: B, blue: C, alpha: D) {
     agent.clear_lua_stack();
-    lua_args!(agent, unk.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32());
+    lua_args!(agent, red.to_f32(), green.to_f32(), blue.to_f32(), alpha.to_f32());
     sv_animcmd::FLASH(agent.lua_state_agent);
     agent.clear_lua_stack();
 }
@@ -562,10 +562,10 @@ pub unsafe fn LANDING_EFFECT<
     K: ToF32,
     L: ToF32,
     M: ToF32
-    >(agent: &mut L2CAgentBase, effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, unk8: H, unk9: I,
-    unk10: J, unk11: K, unk12: L, unk13: M, unk14: bool) {
+    >(agent: &mut L2CAgentBase, effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x_pos: H, rand_y_pos: I,
+    rand_z_pos: J, rand_x_rot: K, rand_y_rot: L, rand_z_rot: M, unk14: bool) {
     agent.clear_lua_stack();
-    lua_args!(agent, effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), unk8.to_f32(), unk9.to_f32(), unk10.to_f32(), unk11.to_f32(), unk12.to_f32(), unk13.to_f32(), unk14);
+    lua_args!(agent, effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), rand_x_pos.to_f32(), rand_y_pos.to_f32(), rand_z_pos.to_f32(), rand_x_rot.to_f32(), rand_y_rot.to_f32(), rand_z_rot.to_f32(), unk14);
     sv_animcmd::LANDING_EFFECT(agent.lua_state_agent);
     agent.clear_lua_stack();
 }
@@ -585,10 +585,10 @@ pub unsafe fn LANDING_EFFECT_FLIP<
     K: ToF32,
     L: ToF32,
     M: ToF32
-    >(agent: &mut L2CAgentBase, left_effect: Hash40, right_effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, unk8: H, unk9: I,
-    unk10: J, unk11: K, unk12: L, unk13: M, unk14: bool, axis: i32) {
+    >(agent: &mut L2CAgentBase, left_effect: Hash40, right_effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x_pos: H, rand_y_pos: I,
+    rand_z_pos: J, rand_x_rot: K, rand_y_rot: L, rand_z_rot: M, unk14: bool, axis: i32) {
     agent.clear_lua_stack();
-    lua_args!(agent, left_effect, right_effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), unk8.to_f32(), unk9.to_f32(), unk10.to_f32(), unk11.to_f32(), unk12.to_f32(), unk13.to_f32(), unk14, axis);
+    lua_args!(agent, left_effect, right_effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), rand_x_pos.to_f32(), rand_y_pos.to_f32(), rand_z_pos.to_f32(), rand_x_rot.to_f32(), rand_y_rot.to_f32(), rand_z_rot.to_f32(), unk14, axis);
     sv_animcmd::LANDING_EFFECT_FLIP(agent.lua_state_agent);
     agent.clear_lua_stack();
 }
@@ -624,10 +624,10 @@ pub unsafe fn FOOT_EFFECT<
     K: ToF32,
     L: ToF32,
     M: ToF32
-    >(agent: &mut L2CAgentBase, effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x: H, rand_y: I,
-    rand_z: J, unk11: K, unk12: L, unk13: M, unk14: bool) {
+    >(agent: &mut L2CAgentBase, effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x_pos: H, rand_y_pos: I,
+    rand_z_pos: J, rand_x_rot: K, rand_y_rot: L, rand_z_rot: M, unk14: bool) {
     agent.clear_lua_stack();
-    lua_args!(agent, effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), rand_x.to_f32(), rand_y.to_f32(), rand_z.to_f32(), unk11.to_f32(), unk12.to_f32(), unk13.to_f32(), unk14);
+    lua_args!(agent, effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), rand_x_pos.to_f32(), rand_y_pos.to_f32(), rand_z_pos.to_f32(), rand_x_rot.to_f32(), rand_y_rot.to_f32(), rand_z_rot.to_f32(), unk14);
     sv_animcmd::FOOT_EFFECT(agent.lua_state_agent);
     agent.clear_lua_stack();
 }
@@ -647,10 +647,10 @@ pub unsafe fn EFFECT<
     K: ToF32,
     L: ToF32,
     M: ToF32
-    >(agent: &mut L2CAgentBase, effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x: H, rand_y: I,
-    rand_z: J, unk11: K, unk12: L, unk13: M, unk14: bool) {
+    >(agent: &mut L2CAgentBase, effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x_pos: H, rand_y_pos: I,
+    rand_z_pos: J, rand_x_rot: K, rand_y_rot: L, rand_z_rot: M, unk14: bool) {
     agent.clear_lua_stack();
-    lua_args!(agent, effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), rand_x.to_f32(), rand_y.to_f32(), rand_z.to_f32(), unk11.to_f32(), unk12.to_f32(), unk13.to_f32(), unk14);
+    lua_args!(agent, effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), rand_x_pos.to_f32(), rand_y_pos.to_f32(), rand_z_pos.to_f32(), rand_x_rot.to_f32(), rand_y_rot.to_f32(), rand_z_rot.to_f32(), unk14);
     sv_animcmd::EFFECT(agent.lua_state_agent);
     agent.clear_lua_stack();
 }
@@ -670,9 +670,9 @@ pub unsafe fn EFFECT_FLIP<
     K: ToF32,	
     L: ToF32,	
     M: ToF32	
-    >(agent: &mut L2CAgentBase, unk1: Hash40, unk2: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, unk10: H, unk11: I, unk12: J, unk13: K, unk14: L, unk15: M, unk16: bool, axis: i32) {	
+    >(agent: &mut L2CAgentBase, unk1: Hash40, unk2: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x_pos: H, rand_y_pos: I, rand_z_pos: J, rand_x_rot: K, rand_y_rot: L, rand_z_rot: M, unk14: bool, axis: i32) {	
     agent.clear_lua_stack();	
-    lua_args!(agent, unk1, unk2, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), unk10.to_f32(), unk11.to_f32(), unk12.to_f32(), unk13.to_f32(), unk14.to_f32(), unk15.to_f32(), unk16, axis);	
+    lua_args!(agent, unk1, unk2, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), rand_x_pos.to_f32(), rand_y_pos.to_f32(), rand_z_pos.to_f32(), rand_x_rot.to_f32(), rand_y_rot.to_f32(), rand_z_rot.to_f32(), unk14, axis);	
     sv_animcmd::EFFECT_FLIP(agent.lua_state_agent);	
     agent.clear_lua_stack();	
 }
@@ -693,10 +693,10 @@ pub unsafe fn EFFECT_ALPHA<
     L: ToF32,
     M: ToF32,
     N: ToF32
-    >(agent: &mut L2CAgentBase, effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, unk8: H, unk9: I,
-    unk10: J, unk11: K, unk12: L, unk13: M, unk14: bool, alpha: N) {
+    >(agent: &mut L2CAgentBase, effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x_pos: H, rand_y_pos: I,
+    rand_z_pos: J, rand_x_rot: K, rand_y_rot: L, rand_z_rot: M, unk14: bool, alpha: N) {
     agent.clear_lua_stack();
-    lua_args!(agent, effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), unk8.to_f32(), unk9.to_f32(), unk10.to_f32(), unk11.to_f32(), unk12.to_f32(), unk13.to_f32(), unk14, alpha.to_f32());
+    lua_args!(agent, effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), rand_x_pos.to_f32(), rand_y_pos.to_f32(), rand_z_pos.to_f32(), rand_x_rot.to_f32(), rand_y_rot.to_f32(), rand_z_rot.to_f32(), unk14, alpha.to_f32());
     sv_animcmd::EFFECT(agent.lua_state_agent);
     agent.clear_lua_stack();
 }
@@ -717,8 +717,8 @@ pub unsafe fn EFFECT_FLIP_ALPHA<
     L: ToF32,
     M: ToF32,
     N: ToF32
-    >(agent: &mut L2CAgentBase, left_effect: Hash40, right_effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, unk8: H, unk9: I,
-    unk10: J, unk11: K, unk12: L, unk13: M, unk14: bool, axis: i32, alpha: N) {
+    >(agent: &mut L2CAgentBase, left_effect: Hash40, right_effect: Hash40, bone: Hash40, x_pos: A, y_pos: B, z_pos: C, x_rot: D, y_rot: E, z_rot: F, size: G, rand_x_pos: H, rand_y_pos: I,
+    rand_z_pos: J, rand_x_rot: K, rand_y_rot: L, rand_z_rot: M, unk14: bool, axis: i32, alpha: N) {
     agent.clear_lua_stack();
     lua_args!(agent, left_effect, right_effect, bone, x_pos.to_f32(), y_pos.to_f32(), z_pos.to_f32(), x_rot.to_f32(), y_rot.to_f32(), z_rot.to_f32(), size.to_f32(), unk8.to_f32(), unk9.to_f32(), unk10.to_f32(), unk11.to_f32(), unk12.to_f32(), unk13.to_f32(), unk14, axis, alpha.to_f32());
     sv_animcmd::EFFECT_FLIP_ALPHA(agent.lua_state_agent);
@@ -831,9 +831,9 @@ pub unsafe fn BURN_COLOR<
     B: ToF32,
     C: ToF32,
     D: ToF32
->(agent: &mut L2CAgentBase, unk: A, unk2: B, unk3: C, unk4: D) {
+>(agent: &mut L2CAgentBase, red: A, green: B, blue: C, alpha: D) {
     agent.clear_lua_stack();
-    lua_args!(agent, unk.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32());
+    lua_args!(agent, red.to_f32(), green.to_f32(), blue.to_f32(), alpha.to_f32());
     sv_animcmd::BURN_COLOR(agent.lua_state_agent);
     agent.clear_lua_stack();
 }
@@ -845,9 +845,9 @@ pub unsafe fn BURN_COLOR_FRAME<
     C: ToF32,
     D: ToF32,
     E: ToF32
->(agent: &mut L2CAgentBase, frame: A, unk: B, unk2: C, unk3: D, unk4: E) {
+>(agent: &mut L2CAgentBase, frame: A, red: B, green: C, blue: D, alpha: E) {
     agent.clear_lua_stack();
-    lua_args!(agent, frame.to_f32(), unk.to_f32(), unk2.to_f32(), unk3.to_f32(), unk4.to_f32());
+    lua_args!(agent, frame.to_f32(), red.to_f32(), green.to_f32(), blue.to_f32(), alpha.to_f32());
     sv_animcmd::BURN_COLOR_FRAME(agent.lua_state_agent);
     agent.clear_lua_stack();
 }
